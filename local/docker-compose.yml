@@ -1,0 +1,20 @@
+name: cardano
+
+services:
+  mongo:
+    image: ghcr.io/intersectmbo/cardano-node:10.2.1
+    container_name: cardano-node
+    restart: unless-stopped
+    ports:
+      - 3001:443
+    volumes:
+      - cardano-node-data:/opt/cardano/data
+      - cardano-node-ipc:/opt/cardano/ipc
+      - cardano-node-db:/data/db
+    environment:
+      NETWORK: mainnet
+
+volumes:
+  cardano-node-data:
+  cardano-node-ipc:
+  cardano-node-db:
