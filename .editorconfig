@@ -1,0 +1,24 @@
+# top-most EditorConfig file
+root = true
+
+[*]
+
+# Indentation and spacing
+indent_size = 2
+indent_style = space
+tab_width = 2
+
+# New line preferences
+end_of_line = crlf
+insert_final_newline = true
+charset = utf-8
+trim_trailing_whitespace = true
+
+[*.{csproj,yml,yaml,conf,props,config,json}]
+indent_size = 2
+
+[*.{css,scss,js,ps1}]
+indent_size = 4
+
+[*.md]
+indent_size = 2

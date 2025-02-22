@@ -1,0 +1,33 @@
+name: cardano-testnet
+
+services:
+  cardano-node:
+    image: ghcr.io/intersectmbo/cardano-node:10.2.1
+    container_name: cardano-node
+    restart: unless-stopped
+    networks:
+      - dependencies_main-net
+    ports:
+      - 3002:443
+      - 12798:12798
+    volumes:
+      - ./cardano-node/testnet:/config
+      - cardano-node-testnet-data:/opt/cardano/data
+      - cardano-node-testnet-ipc:/opt/cardano/ipc
+      - cardano-node-testnet-db:/data/db
+    command:
+      run
+      --topology /config/topology.json
+      --host-addr 0.0.0.0
+      --port 3001
+      --config /config/config.json
+
+volumes:
+  cardano-node-testnet-data:
+  cardano-node-testnet-ipc:
+  cardano-node-testnet-db:
+
+networks:
+  dependencies_main-net:
+    driver: bridge
+    external: true
