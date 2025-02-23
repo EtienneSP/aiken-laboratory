@@ -1,0 +1,24 @@
+name: cardano-testnet-client
+
+services:
+  cardano-testnet-client:
+    image: ghcr.io/intersectmbo/cardano-node:10.1.4
+    container_name: cardano-testnet-client
+    restart: no
+    environment:
+      - CARDANO_NODE_SOCKET_PATH=/ipc/socket
+    networks:
+      - dependencies_main-net
+    volumes:
+      - cardano-testnet_cardano-node-testnet-ipc:/ipc
+    command:
+      cli query tip --testnet-magic 2
+
+volumes:
+  cardano-testnet_cardano-node-testnet-ipc:
+    external: true
+
+networks:
+  dependencies_main-net:
+    driver: bridge
+    external: true

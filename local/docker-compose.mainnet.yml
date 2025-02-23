@@ -2,18 +2,18 @@ name: cardano-mainnet
 
 services:
   cardano-node:
-    image: ghcr.io/intersectmbo/cardano-node:10.2.1
+    image: ghcr.io/intersectmbo/cardano-node:10.1.4
     container_name: cardano-node
     restart: unless-stopped
     networks:
       - dependencies_main-net
     ports:
-      - 3002:443
+      - 3001:3001
       - 12798:12798
     volumes:
       - ./cardano-node/mainnet:/config
-      - cardano-node-mainnet-data:/opt/cardano/data
       - cardano-node-mainnet-ipc:/opt/cardano/ipc
+      - cardano-node-mainnet-data:/opt/cardano/data
       - cardano-node-mainnet-db:/data/db
     command:
       run
