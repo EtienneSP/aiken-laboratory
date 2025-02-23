@@ -29,7 +29,14 @@ Run either the mainnet or testnet docker-compose, based on the environment you w
 docker compose -f ./docker-compose.testnet.yml up -d
 ```
 
-### 4. Test the socket connection with the client
+Monitor the container logs to validate that the node started correctly.  
+Once the node is 100% sync, you will be able to interact directly with it using the cardano-cli
+
+```shell
+docker exec -it cardano-node cardano-cli query tip --testnet-magic 2
+```
+
+### 4. Interact with the cardano node from another container
 
 This is a simple separated container that runs one cardano-cli commands, as a demo, to demonstrate the interaction with the Cardano node from an other container.
 

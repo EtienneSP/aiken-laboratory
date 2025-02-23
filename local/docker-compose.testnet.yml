@@ -5,6 +5,8 @@ services:
     image: ghcr.io/intersectmbo/cardano-node:10.1.4
     container_name: cardano-node
     restart: unless-stopped
+    environment:
+      - CARDANO_NODE_SOCKET_PATH=/opt/cardano/ipc/socket
     networks:
       - dependencies_main-net
     ports:
